@@ -34,7 +34,7 @@ define(function (require) {
 			
 			if (Backbone.history.fragment == "") {
 			
-				target = "home"
+				target = "my-projects"
 			
 			} 
 

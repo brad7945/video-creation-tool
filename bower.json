@@ -22,6 +22,7 @@
     "lodash": "~2.3.0",
     "backbone": "https://raw.github.com/jashkenas/backbone/master/backbone.js",
     "handlebars": "~1.1.2",
+    "holderjs": "2.3",
     "requirejs-text": "~2.0.10",
     "requirejs-handlebars-plugin": "https://github.com/mundizzle/requirejs-handlebars-plugin/archive/v0.0.3.zip",
     "requirejs": "~2.1.9",

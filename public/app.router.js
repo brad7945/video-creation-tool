@@ -7,7 +7,7 @@ define(function (require, exports, module) {
 	return Backbone.Router.extend({
 
 		routes: {
-			''					: 	'home',
+			''					: 	'my_projects',
 			'my-projects'		: 	'my_projects',
 			'templates'			: 	'templates',
 			'photos-videos'		: 	'photos_videos',

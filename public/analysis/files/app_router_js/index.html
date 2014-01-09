@@ -45,11 +45,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"></i></a></h2>
-      <p class="stat">79.46</p>
+      <p class="stat">79.87</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC"></i></h2>
-      <p class="stat">21</p>
+      <p class="stat">140</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +63,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty"></i></a></h2>
-      <p class="stat">8.44</p>
+      <p class="stat">13.04</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs"></i></a></h2>
-      <p class="stat">0.08</p>
+      <p class="stat">0.53</p>
     </div>
   </div>
 </div>
@@ -93,21 +93,140 @@
     <textarea id="file-source" class="col-md-12">define(function (require, exports, module) {
 
 	var Backbone = require(&#039;backbone&#039;);
+	var mediator = require(&#039;framework/mediator&#039;);
+	var appLayoutTemplate = require(&#039;html!ui/_shared/layouts/app&#039;);
 
 	return Backbone.Router.extend({
+
 		routes: {
-			&#039;&#039;: &#039;home&#039;
+			&#039;&#039;					: 	&#039;my_projects&#039;,
+			&#039;my-projects&#039;		: 	&#039;my_projects&#039;,
+			&#039;templates&#039;			: 	&#039;templates&#039;,
+			&#039;photos-videos&#039;		: 	&#039;photos_videos&#039;,
+			&#039;audio&#039;				: 	&#039;audio&#039;,
+			&#039;my-account&#039;		: 	&#039;my_account&#039;,
+			&#039;billing-history&#039;	: 	&#039;billing_history&#039;,
+			&#039;logout&#039;			: 	&#039;logout&#039;,
+			&#039;help&#039;				: 	&#039;help&#039;,
 		},
+
 		home: function(){
 
 			require([&#039;ui/home/home&#039;], function(Home){
 
-				var home = new Home();
-				home.render();
+				new Home({
+					layoutTemplate: appLayoutTemplate
+				}).render();
 
+			
 			});
+			
+		},
 
-		}
+		my_projects: function(){
+
+			require([&#039;ui/projects/projects&#039;], function(Projects){
+
+				new Projects({
+					layoutTemplate: appLayoutTemplate
+				}).render();
+
+			
+			});
+			
+		},
+
+		templates: function(){
+
+			require([&#039;ui/templates/templates&#039;], function(Templates){
+
+				new Templates({
+					layoutTemplate: appLayoutTemplate
+				}).render();
+
+			
+			});
+			
+		},
+
+		photos_videos: function(){
+
+			require([&#039;ui/photos-videos/photos-videos&#039;], function(PhotosVideos){
+
+				new PhotosVideos({
+					layoutTemplate: appLayoutTemplate
+				}).render();
+
+			
+			});
+			
+		},
+
+		audio: function(){
+
+			require([&#039;ui/audio/audio&#039;], function(Audio){
+
+				new Audio({
+					layoutTemplate: appLayoutTemplate
+				}).render();
+
+			
+			});
+			
+		},
+
+		my_account: function(){
+
+			require([&#039;ui/my-account/my-account&#039;], function(MyAccount){
+
+				new MyAccount({
+					layoutTemplate: appLayoutTemplate
+				}).render();
+
+			
+			});
+			
+		},
+
+		billing_history: function(){
+
+			require([&#039;ui/billing-history/billing-history&#039;], function(BillingHistory){
+
+				new BillingHistory({
+					layoutTemplate: appLayoutTemplate
+				}).render();
+
+			
+			});
+			
+		},
+
+		logout: function(){
+
+			require([&#039;ui/logout/logout&#039;], function(Logout){
+
+				new Logout({
+					layoutTemplate: appLayoutTemplate
+				}).render();
+
+			
+			});
+			
+		},
+
+		help: function(){
+
+			require([&#039;ui/help/help&#039;], function(Help){
+
+				new Help({
+					layoutTemplate: appLayoutTemplate
+				}).render();
+
+			
+			});
+			
+		},
+
 	});
 
 });</textarea>
