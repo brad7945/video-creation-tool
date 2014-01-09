@@ -26,7 +26,33 @@ define(function (require) {
 
 			this.initialize.apply(this, arguments);
 
-		}
+		},
+
+		highlightActiveMenuItem: function() {
+			
+			var target;
+			
+			if (Backbone.history.fragment == "") {
+			
+				target = "home"
+			
+			} 
+
+			else if(Backbone.history.fragment == "my-account" || Backbone.history.fragment == "billing-history" || Backbone.history.fragment == "logout") {
+			
+				target = "welcome"
+			
+			} 
+
+			else {
+			
+				target = Backbone.history.fragment;
+			
+			}
+			
+			$("ul.nav > li."+target).addClass("active");
+
+		},
 
 	});
 

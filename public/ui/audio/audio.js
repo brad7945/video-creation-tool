@@ -6,9 +6,19 @@ define(function (require, exports, module) {
 	var template = require('html!./audio');
 
 	return BaseView.extend({
+
+		initialize: function(){
+
+			this.highlightActiveMenuItem();
+
+		},
+
 		render: function(){
+		
 			this.$el.append(template({}));
+		
 		}
+
 	});
 
 });

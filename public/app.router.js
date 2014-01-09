@@ -2,7 +2,6 @@ define(function (require, exports, module) {
 
 	var Backbone = require('backbone');
 	var mediator = require('framework/mediator');
-
 	var appLayoutTemplate = require('html!ui/_shared/layouts/app');
 
 	return Backbone.Router.extend({
@@ -122,6 +121,20 @@ define(function (require, exports, module) {
 			});
 			
 		},
+
+		help: function(){
+
+			require(['ui/help/help'], function(Help){
+
+				new Help({
+					layoutTemplate: appLayoutTemplate
+				}).render();
+
+			
+			});
+			
+		},
+
 	});
 
 });

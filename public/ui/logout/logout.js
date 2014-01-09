@@ -6,9 +6,19 @@ define(function (require, exports, module) {
 	var template = require('html!./logout');
 
 	return BaseView.extend({
+
+		initialize: function(){
+
+			this.highlightActiveMenuItem();
+
+		},
+
 		render: function(){
+
 			this.$el.append(template({}));
+
 		}
+	
 	});
 
 });
