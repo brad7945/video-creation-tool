@@ -1,12 +1,13 @@
 define(function (require, exports, module) {
 
+	var BaseView = require('framework/baseView');
+
 	require('css!./home');
 	var template = require('html!./home');
-	var BaseView = require('framework/baseview');
 
 	return BaseView.extend({
 		render: function(){
-			$('body').append(template({}));
+			this.$el.append(template({}));
 		}
 	});
 

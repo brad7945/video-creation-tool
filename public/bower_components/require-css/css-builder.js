@@ -1,27 +1,19 @@
 define(['require', './normalize'], function(req, normalize) {
   var cssAPI = {};
   
-  var isWindows = !!process.platform.match(/^win/);
-
   function compress(css) {
     if (typeof process !== "undefined" && process.versions && !!process.versions.node && require.nodeRequire) {
       try {
         var csso = require.nodeRequire('csso');
+        var csslen = css.length;
+        css = csso.justDoIt(css);
+        console.log('Compressed CSS output to ' + Math.round(css.length / csslen * 100) + '%.');
+        return css;
       }
       catch(e) {
         console.log('Compression module not installed. Use "npm install csso -g" to enable.');
         return css;
       }
-      var csslen = css.length;
-      try {
-        css =  csso.justDoIt(css);
-      }
-      catch(e) {
-        console.log('Compression failed due to a CSS syntax error.');
-        return css;
-      }
-      console.log('Compressed CSS output to ' + Math.round(css.length / csslen * 100) + '%.');
-      return css;
     }
     console.log('Compression not supported outside of nodejs environments.');
     return css;
@@ -111,11 +103,7 @@ define(['require', './normalize'], function(req, normalize) {
     //store config
     config = config || _config;
 
-    if (!siteRoot) {
-      siteRoot = path.resolve(config.dir || path.dirname(config.out), config.siteRoot || '.') + '/';
-      if (isWindows)
-        siteRoot = siteRoot.replace(/\\/g, '/');
-    }
+    siteRoot = siteRoot || path.resolve(config.dir || path.dirname(config.out), config.siteRoot || '.') + '/';
 
     //external URLS don't get added (just like JS requires)
     if (name.match(absUrlRegEx))
@@ -124,7 +112,7 @@ define(['require', './normalize'], function(req, normalize) {
     var fileUrl = req.toUrl(name + '.css');
 
     //add to the buffer
-    cssBuffer[name] = normalize(loadFile(fileUrl), isWindows ? fileUrl.replace(/\\/g, '/') : fileUrl, siteRoot);
+    cssBuffer[name] = normalize(loadFile(fileUrl), fileUrl, siteRoot);
 
     load();
   }

@@ -1,5 +1,5 @@
 /**
- * @license almond 0.2.8 Copyright (c) 2011-2012, The Dojo Foundation All Rights Reserved.
+ * almond 0.2.7 Copyright (c) 2011-2012, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
  * see: http://github.com/jrburke/almond for details
  */
@@ -31,11 +31,10 @@ var requirejs, require, define;
      * @returns {String} normalized name
      */
     function normalize(name, baseName) {
-        var nameParts, nameSegment, mapValue, foundMap, lastIndex,
+        var nameParts, nameSegment, mapValue, foundMap,
             foundI, foundStarMap, starI, i, j, part,
             baseParts = baseName && baseName.split("/"),
             map = config.map,
-            jsSuffixRegExp = /\.js$/,
             starMap = (map && map['*']) || {};
 
         //Adjust any relative paths.
@@ -50,16 +49,8 @@ var requirejs, require, define;
                 //"one/two/three.js", but we want the directory, "one/two" for
                 //this normalization.
                 baseParts = baseParts.slice(0, baseParts.length - 1);
-                name = name.split('/');
-                lastIndex = name.length - 1;
 
-                // Node .js allowance:
-                if (config.pkgs && hasProp(config.pkgs, baseParts[0]) &&
-                    jsSuffixRegExp.test(name[lastIndex])) {
-                    name[lastIndex] = name[lastIndex].replace(jsSuffixRegExp, '');
-                }
-
-                name = baseParts.concat(name);
+                name = baseParts.concat(name.split("/"));
 
                 //start trimDots
                 for (i = 0; i < name.length; i += 1) {
@@ -328,7 +319,6 @@ var requirejs, require, define;
     };
 
     requirejs = require = req = function (deps, callback, relName, forceSync, alt) {
-        var i, pkgs;
         if (typeof deps === "string") {
             if (handlers[deps]) {
                 //callback in this case is really relName
@@ -342,20 +332,6 @@ var requirejs, require, define;
         } else if (!deps.splice) {
             //deps is a config object, not an array.
             config = deps;
-            if (config.deps) {
-                req(config.deps, config.callback);
-            }
-            pkgs = config.packages;
-            if (config.packages) {
-                config.pkgs = {};
-                for (i = 0; i < pkgs.length; i++) {
-                    config.pkgs[pkgs[i].name || pkgs[i]] = true;
-                }
-            }
-            if (!callback) {
-                return;
-            }
-
             if (callback.splice) {
                 //callback is an array, which means it is a dependency list.
                 //Adjust args if there are dependencies
@@ -400,7 +376,11 @@ var requirejs, require, define;
      * the config return value is used.
      */
     req.config = function (cfg) {
-        return req(cfg);
+        config = cfg;
+        if (config.deps) {
+            req(config.deps, config.callback);
+        }
+        return req;
     };
 
     /**
