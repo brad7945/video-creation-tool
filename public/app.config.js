@@ -9,9 +9,7 @@ require.config({
 		jquery: 'bower_components/jquery/jquery',
 		jquery_ui: 'bower_components/jquery-ui-amd/jquery-ui-1.10.0/jqueryui',
 		underscore: 'bower_components/lodash/dist/lodash',
-		text: 'bower_components/requirejs-text/text',
-		mocha: 'bower_components/mocha/mocha',
-		expect: 'bower_components/expect/expect'
+		text: 'bower_components/requirejs-text/text'
 	},
 	shim: {
 		bootstrap_js: ['jquery']
@@ -23,7 +21,7 @@ require.config({
 	}],
 	map: {
 		'*': {
-			'css': (typeof mocha !== 'undefined') ? 'test/stubCSS' : 'css'
+			'css': 'css'
 		}
 	}
 });

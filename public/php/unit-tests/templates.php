@@ -15,7 +15,7 @@ $dbhandle = mysql_connect($hostname, $username, $password) or die("Unable to con
 $selected = mysql_select_db($dbname,$dbhandle) or die("Could not select examples");
 
 //execute the SQL query and return records
-$result = mysql_query("select * from template t inner join template_meta_master tmm");
+$result = mysql_query("select * from template t inner join template_meta_master tmm  ORDER BY t.id asc");
 
 $rows = array();
 while($r = mysql_fetch_assoc($result)) {

@@ -7,6 +7,7 @@ define(function (require) {
 	require('css!ui/_shared/styles/global');
 	var Backbone = require('backbone');
 	var mediator = require('framework/mediator');
+	
 
 	return Backbone.View.extend({
 
