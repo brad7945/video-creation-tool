@@ -3,9 +3,13 @@ define(function (require, exports, module) {
 	var BaseView = require('framework/baseView');
 	var Holder = require('holderjs');
 	var TemplatesCollection = require('collections/Templates');
-	
+	var TemplatesMenuView = require('./TemplatesMenu');
+	var TemplatesListView = require('./TemplatesList');
+
 	require('css!./templates');
 	var template = require('html!./templates');
+
+
 
 	return BaseView.extend({
 
@@ -23,21 +27,17 @@ define(function (require, exports, module) {
 		},
 
 		render: function(){
-
-			
-			this.collection.groupBy( function(model){
-				console.log("returning grouped results")
-				return model.get('title');
-			});
-
-			console.log('...', this.collection.toJSON())
 			
 			this.$el.append(template({}));
-			Holder.run();
+			
 			// activate the tool tips for this view
 			$(".preview-video-tooltip").tooltip();
 			$(".create-video-tooltip").tooltip();
 
+			// create sub views for each module
+			var templatesMenuView = new TemplatesMenuView().render();
+			var templatesListView = new TemplatesListView(this.collection);
+			
 		}
 		
 	});

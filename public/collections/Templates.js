@@ -6,7 +6,7 @@ define(function (require, exports, module) {
 
 			model: TemplatesModel,
 
-			url: 'php/unit-tests/templates.php',
+			url: 'php/unit-tests/templates.php?contentType=images',
 
 			parse: function(response) {
 	
