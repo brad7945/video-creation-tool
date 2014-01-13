@@ -50,7 +50,7 @@ define(function (require, exports, module) {
 
 				new Templates({
 					layoutTemplate: appLayoutTemplate
-				}).render();
+				});
 
 			
 			});

@@ -29,15 +29,10 @@ define(function (require, exports, module) {
 		render: function(){
 			
 			this.$el.append(template({}));
-			
-			// activate the tool tips for this view
-			$(".preview-video-tooltip").tooltip();
-			$(".create-video-tooltip").tooltip();
 
 			// create sub views for each module
 			var templatesMenuView = new TemplatesMenuView().render();
 			var templatesListView = new TemplatesListView(this.collection);
-			
 		}
 		
 	});

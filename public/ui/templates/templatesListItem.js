@@ -9,8 +9,35 @@ define(function (require, exports, module) {
 
 		render: function(){
 
-			console.log(this.model); // node item
-			this.$el.html(template({}));
+			var options = [];
+
+			if (this.model.images != "0") {
+				options.push(this.model.images + " images");
+			}
+
+			if (this.model.videos != "0") {
+				options.push(this.model.videos + " videos");
+			}
+
+			var customizedText = "";
+
+			for (var i=0; i < options.length; i++) {
+
+				if (i < options.length - 1) {
+					customizedText += options[i] + " and ";	
+				} else {
+					customizedText += options[i];
+				}
+				
+			}
+
+			this.model.customizedText = customizedText;
+			this.model.previewToolTipTitle = "Click to watch video.";
+			this.model.createToolTipTitle = "Click to create a video.";
+			this.$el.html(template(this.model));
+			// activate the tool tips for the list
+			$(".preview-video-tooltip").tooltip({'placement': 'bottom'});
+			$(".create-video-tooltip").tooltip();
 			return this;
 			
 		}
