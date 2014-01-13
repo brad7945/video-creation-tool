@@ -34,6 +34,7 @@ define(function (require, exports, module) {
 			this.model.customizedText = customizedText;
 			this.model.previewToolTipTitle = "Click to watch video.";
 			this.model.createToolTipTitle = "Click to create a video.";
+			this.model.thumbnailURL = "resources/images/templates/" + this.model.name + ".png";
 			this.$el.html(template(this.model));
 			// activate the tool tips for the list
 			$(".preview-video-tooltip").tooltip({'placement': 'bottom'});

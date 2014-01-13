@@ -10,23 +10,53 @@ define(function (require, exports, module) {
 		el: "#templates-menu-container",
 
 		events: {
-			//"click li a": "filterSelected"
+			"click #content-filter li a"	: 		"contentFilterSelected",
+			"click #duration-filter li a"	: 		"durationFilterSelected",
+
 		},
 
-		render: function(){
+		render: function(options){
 
 			this.$el.html(template({}))
 
-		},
-
-		filterSelected: function (e){
-
-			var id = $(e.currentTarget).data("id");
-			if (id !== undefined) {
-				console.log(id);
+			if(options.contentType.length) {
+				$("#content-type-filter-results").html(options.contentType)	
 			}
 			
+			if(options.duration.length) {
+				$("#duration-filter-results").html(options.duration)
+			}
+			
+
+		},
+
+		contentFilterSelected: function (e){
+
+			var id = e.currentTarget.id;
+			if (id !== undefined) {
+				$("#content-type-filter-results").html(id);
+				this.filterApplied();
+			}			
 		
+		},
+
+		durationFilterSelected: function (e){
+
+			var id = e.currentTarget.id;
+			if (id !== undefined) {
+				$("#duration-filter-results").html(id);
+				this.filterApplied();
+			}
+		
+		},
+
+		filterApplied: function() {
+
+			var contentType = $("#content-type-filter-results").html();
+			var duration = $("#duration-filter-results").html();
+
+			window.location='#templates/contentType/'+contentType+'/duration/'+duration;
+
 		}
 		
 	});

@@ -13,22 +13,27 @@
                <ul class="nav navbar-nav navbar">
                     <li class="dropdown">
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sort By Content <b class="caret"></b></a>
-                         <ul class="dropdown-menu">
-                              <li><a href="#templates" data-id="contentType=images">Images</a></li>
-                              <li><a href="#templates" data-id="contentType=videos">Videos</a></li>
-                              <li><a href="#templates" data-id="contentType=all">Both</a></li>
+                         <ul id="content-filter" class="dropdown-menu">
+                              <li><a onclick="return false;" href="#" id="images">Images</a></li>
+                              <li><a onclick="return false;" href="#" id="videos">Videos</a></li>
+                              <li><a onclick="return false;" href="#" id="all">All</a></li>
                          </ul>
                     </li>
+
+                    <li><a id="content-type-filter-results" href="#templates">All</a></li>     
+
                     <li class="dropdown">
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sort By Duration <b class="caret"></b></a>
-                         <ul class="dropdown-menu">
-                              <li><a href="#templates">15</a></li>
-                              <li><a href="#templates">30</a></li>
-                              <li><a href="#templates">45</a></li>
-                              <li><a href="#templates">60</a></li>
-                              <li><a href="#templates">All</a></li>
+                         <ul id="duration-filter" class="dropdown-menu">
+                              <li><a onclick="return false;" href="#" id="15">15</a></li>
+                              <li><a onclick="return false;" href="#" id="30">30</a></li>
+                              <li><a onclick="return false;" href="#" id="45">45</a></li>
+                              <li><a onclick="return false;" href="#" id="60">60</a></li>
+                              <li><a onclick="return false;" href="#" id="all">All</a></li>
                          </ul>
                     </li>
+
+                    <li><a id="duration-filter-results" href="#templates">All</a></li>
                </ul>
                <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">

@@ -9,7 +9,8 @@ define(function (require, exports, module) {
 		routes: {
 			''					: 	'my_projects',
 			'my-projects'		: 	'my_projects',
-			'templates'			: 	'templates',
+    		//'templates'			:   'templates',
+    		"templates(/contentType/:contentType)(/duration/:duration)": "templates",
 			'photos-videos'		: 	'photos_videos',
 			'audio'				: 	'audio',
 			'my-account'		: 	'my_account',
@@ -44,13 +45,22 @@ define(function (require, exports, module) {
 			
 		},
 
-		templates: function(){
+		templates: function(_contentType, _duration){
+
+			var contentType = "all";
+			var duration = "all";
+
+			if (_contentType !== null) {
+				contentType = _contentType;
+			}
+
+			if (_duration !== null) {
+				duration = _duration;
+			}
 
 			require(['ui/templates/templates'], function(Templates){
 
-				new Templates({
-					layoutTemplate: appLayoutTemplate
-				});
+				new Templates({layoutTemplate: appLayoutTemplate, contentType : contentType, duration : duration })
 
 			
 			});

@@ -50,7 +50,7 @@ define(function (require) {
 			
 			}
 			
-			$("ul.nav > li."+target).addClass("active");
+			//$("ul.nav > li."+target).addClass("active");
 
 		},
 

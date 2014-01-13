@@ -36,7 +36,11 @@ if (isset($_GET['duration'])) {
 		$where .= " AND ";
 	}
 
-	$where .= " duration = '".$_GET['duration']."'";
+	if ($_GET['duration'] == "all") {
+		$where .= " duration > 0";
+	} else {
+		$where .= " duration = '".$_GET['duration']."'";	
+	}
 }
 
 $sql = "select * from template t inner join template_meta_master tmm on name = title".$where." ORDER BY t.id asc";
