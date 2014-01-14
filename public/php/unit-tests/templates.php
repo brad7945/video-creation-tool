@@ -3,10 +3,17 @@
 // Report all PHP errors (see changelog)
 error_reporting(E_ALL);
 
+$username = "dev_user";
+$password = "oneononedev";
+$hostname = "oneononemysql.csxyu1j8lhaz.us-west-2.rds.amazonaws.com:3306"; 
+$dbname = "effsu_dev";
+
+/*
 $username = "root";
 $password = "collier336";
 $hostname = "localhost"; 
 $dbname = "video-creation-tool";
+*/
 
 //connection to the database
 $dbhandle = mysql_connect($hostname, $username, $password) or die("Unable to connect to MySQL");
