@@ -1,6 +1,8 @@
 define(function (require, exports, module) {
 	
 	var Backbone = require('backbone');
+	var BaseView = require('framework/baseView');
+	var mediator = require('framework/mediator');
 	require('css!./templatesMenu');
 	var template = require('html!./templatesMenu');
 	
@@ -10,8 +12,11 @@ define(function (require, exports, module) {
 		el: "#templates-menu-container",
 
 		events: {
-			"click #content-filter li a"	: 		"contentFilterSelected",
-			"click #duration-filter li a"	: 		"durationFilterSelected",
+			"click #content-filter li a"		: 		"contentFilterSelected",
+			"click #duration-filter li a"		: 		"durationFilterSelected",
+			"keyup input#style-search-input"	: 		"searchInputOnChange",
+			"onchange input#style-search-input"	: 		"searchInputOnChange",
+			"click .clear-results"				: 		"clearResults",
 
 		},
 
@@ -56,6 +61,22 @@ define(function (require, exports, module) {
 			var duration = $("#duration-filter-results").html();
 
 			window.location='#templates/contentType/'+contentType+'/duration/'+duration;
+
+		},
+
+		searchInputOnChange: function() {
+
+			mediator.trigger('searchTemplates', $("#style-search-input").val());
+			$(".clear-results").show();
+
+		},
+
+		clearResults: function() {
+
+			$("#style-search-input").val("");
+			mediator.trigger('searchTemplates', $("#style-search-input").val());
+			$(".clear-results").hide();
+
 
 		}
 		

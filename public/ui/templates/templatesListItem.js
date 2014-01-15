@@ -6,7 +6,8 @@ define(function (require, exports, module) {
 	var template = require('html!./templatesListItem');
 
 	return Backbone.View.extend({
-
+	  	tagname:'div',
+	    id: 'list-item-container',
 		render: function(){
 
 			var options = [];
@@ -39,6 +40,7 @@ define(function (require, exports, module) {
 			// activate the tool tips for the list
 			$(".preview-video-tooltip").tooltip({'placement': 'bottom'});
 			$(".create-video-tooltip").tooltip();
+			console.log(this.el);
 			return this;
 			
 		}

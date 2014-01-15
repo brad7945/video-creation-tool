@@ -41,6 +41,7 @@ define(function (require, exports, module) {
 		render: function(){
 			
 			var templatesListView = new TemplatesListView(this.collection);
+			
 		}
 		
 	});
