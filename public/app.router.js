@@ -58,9 +58,9 @@ define(function (require, exports, module) {
 				duration = _duration;
 			}
 
-			require(['ui/templates/templates'], function(Templates){
+			require(['ui/templates/templatesLayoutView'], function(TemplatesLayoutView){
 
-				new Templates({layoutTemplate: appLayoutTemplate, contentType : contentType, duration : duration })
+				new TemplatesLayoutView({layoutTemplate: appLayoutTemplate, contentType : contentType, duration : duration })
 
 			
 			});

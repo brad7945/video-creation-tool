@@ -3,9 +3,8 @@ define(function (require, exports, module) {
 	var Backbone = require('backbone');
 	var BaseView = require('framework/baseView');
 	var mediator = require('framework/mediator');
-	require('css!./templatesListItem');
-	var template = require('html!./templatesListItem');
-	var TemplatesListItemView = require('./TemplatesListItem');
+	var template = require('html!../templatesListItem/templatesListItem');
+	var TemplatesListItemView = require('../templatesListItem/templatesListItem');
 	
 
 	return BaseView.extend({

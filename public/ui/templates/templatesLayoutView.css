@@ -1,0 +1,7 @@
+.templates-nav li ul li {
+	display: none;
+}
+
+.templates-nav li.active ul li {
+	display: block;
+}

@@ -21,7 +21,7 @@ define(function (require, exports, module) {
 		},
 
 		render: function(options){
-
+			console.log('on render')
 			this.$el.html(template({}))
 
 			if(options.contentType.length) {

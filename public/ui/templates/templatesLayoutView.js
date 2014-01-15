@@ -3,11 +3,11 @@ define(function (require, exports, module) {
 	var BaseView = require('framework/baseView');
 	var Holder = require('holderjs');
 	var TemplatesCollection = require('collections/Templates');
-	var TemplatesMenuView = require('./TemplatesMenu');
-	var TemplatesListView = require('./TemplatesList');
+	var TemplatesMenuView = require('./templatesMenu/templatesMenu');
+	var TemplatesListView = require('./templatesList/templatesListLayoutView');
 
-	require('css!./templates');
-	var template = require('html!./templates');
+	require('css!./templatesLayoutView');
+	var template = require('html!./templatesLayoutView');
 
 
 
