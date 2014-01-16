@@ -139,8 +139,8 @@
 
 		templates: function(_contentType, _duration){
 
-			var contentType = &quot;all&quot;;
-			var duration = &quot;all&quot;;
+			var contentType = &quot;any&quot;;
+			var duration = &quot;any&quot;;
 
 			if (_contentType !== null) {
 				contentType = _contentType;
@@ -150,9 +150,9 @@
 				duration = _duration;
 			}
 
-			require([&#039;ui/templates/templates&#039;], function(Templates){
+			require([&#039;ui/templates/templatesLayoutView&#039;], function(TemplatesLayoutView){
 
-				new Templates({layoutTemplate: appLayoutTemplate, contentType : contentType, duration : duration })
+				new TemplatesLayoutView({layoutTemplate: appLayoutTemplate, contentType : contentType, duration : duration })
 
 			
 			});

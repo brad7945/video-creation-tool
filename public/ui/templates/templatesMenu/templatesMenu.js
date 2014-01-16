@@ -10,10 +10,15 @@ define(function (require, exports, module) {
 	return Backbone.View.extend({
 
 		el: "#templates-menu-container",
+		contentFilter: "",
+		durationFilter: "",
 
 		events: {
-			"click #content-filter li a"		: 		"contentFilterSelected",
-			"click #duration-filter li a"		: 		"durationFilterSelected",
+			"click #get-all-templates-btn"		: 		"getAllTemplates",
+			"click #sort-by-content"			: 		"sortByContentExpand", 
+			"click #sort-by-duration"			: 		"sortByDurationExpand", 
+		    "click #content-filter li a"        :       "contentFilterSelected",
+   	        "click #duration-filter li a"       :       "durationFilterSelected",
 			"keyup input#style-search-input"	: 		"searchInputOnChange",
 			"onchange input#style-search-input"	: 		"searchInputOnChange",
 			"click .clear-results"				: 		"clearResults",
@@ -21,17 +26,30 @@ define(function (require, exports, module) {
 		},
 
 		render: function(options){
-			console.log('on render')
+			
 			this.$el.html(template({}))
+			
+		},
 
-			if(options.contentType.length) {
-				$("#content-type-filter-results").html(options.contentType)	
-			}
-			
-			if(options.duration.length) {
-				$("#duration-filter-results").html(options.duration)
-			}
-			
+		getAllTemplates: function() {
+
+			$("#get-all-templates-btn").parent("li").addClass("active")
+			$(".templates-nav li").removeClass("active");
+			mediator.trigger('getAllTemplates', this);
+
+		},
+
+		sortByContentExpand: function(){
+
+			$(".templates-nav li").removeClass("active");
+			$("#sort-by-content").parent("li").addClass("active")
+
+		},
+
+		sortByDurationExpand: function(){
+
+			$(".templates-nav li").removeClass("active");
+			$("#sort-by-duration").parent("li").addClass("active")
 
 		},
 
@@ -39,7 +57,7 @@ define(function (require, exports, module) {
 
 			var id = e.currentTarget.id;
 			if (id !== undefined) {
-				$("#content-type-filter-results").html(id);
+				this.contentFilter = id;
 				this.filterApplied();
 			}			
 		
@@ -49,7 +67,7 @@ define(function (require, exports, module) {
 
 			var id = e.currentTarget.id;
 			if (id !== undefined) {
-				$("#duration-filter-results").html(id);
+				this.durationFilter = id;
 				this.filterApplied();
 			}
 		
@@ -57,10 +75,17 @@ define(function (require, exports, module) {
 
 		filterApplied: function() {
 
-			var contentType = $("#content-type-filter-results").html();
-			var duration = $("#duration-filter-results").html();
-
-			window.location='#templates/contentType/'+contentType+'/duration/'+duration;
+			var baseUrl = '#templates';
+			var params = '';
+			if (this.contentFilter !== "") {
+				params += "/contentType/"+this.contentFilter;
+			}
+			if (this.durationFilter !== "") {
+				params += "/duration/"+this.durationFilter;
+			}
+			var finalUrl = baseUrl + params;
+			console.log(finalUrl)
+			window.location = finalUrl;
 
 		},
 

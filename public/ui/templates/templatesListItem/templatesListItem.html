@@ -1,4 +1,4 @@
-<div class="col-md-4 list-item">
+<div class="list-item">
      <div class="thumbnail">
           <img src="{{thumbnailURL}}" />
           <div class="caption">
@@ -8,19 +8,18 @@
                          <tr>
                               <th>Images</th>
                               <th>Videos</th>
-                              <th>Duration</th>
+                              <th>Length</th>
                          </tr>
                     </thead>
                     <tr>
                          <td>{{images}}</td>
                          <td>{{videos}}</td>
-                         <td>{{duration}} seconds</td>
+                         <td>{{duration}}</td>
                     </tr>
                </table>
-               <p class="small">* All styles allow for up to 6 lines of content info</p>
                <p>
                     <a class="btn btn-success create-video-tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{{createToolTipTitle}}" role="button">Create</a>
-                    <a class="btn btn-info preview-video-tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{{previewToolTipTitle}}" role="button">Preview</a> 
+                    <a class="btn btn-info preview-video-tooltip pull-right" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{{previewToolTipTitle}}" role="button">Preview</a> 
                </p>
           </div>
      </div>

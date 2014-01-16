@@ -8,8 +8,9 @@ define(function (require, exports, module) {
 	return Backbone.View.extend({
 	  	tagname:'div',
 	    id: 'list-item-container',
-		render: function(){
 
+		render: function(){
+			
 			var options = [];
 
 			if (this.model.images != "0") {
@@ -40,7 +41,7 @@ define(function (require, exports, module) {
 			// activate the tool tips for the list
 			$(".preview-video-tooltip").tooltip({'placement': 'bottom'});
 			$(".create-video-tooltip").tooltip();
-			console.log(this.el);
+
 			return this;
 			
 		}

@@ -1,48 +1,52 @@
 <ul class="nav templates-nav">
-     <li class="active">
-          <a href="#templates">All Templates</a>  
-     </li>
+     <!--
      <li>
-          <a href="#templates">Newest Templates</a>    
+          <a class="active" id="newest-templates" href="#templates">Newest Templates</a>    
      </li>
      <li>
           <a href="#templates">Popular Templates</a>   
      </li>
+     -->
+     <li class="active" >
+          <a id="get-all-templates-btn" onclick="return false;" href="#">All Templates</a>  
+     </li>
      <hr>
+     <li id="content-filter" class="dropdown">
+          <a id="sort-by-content" onclick="return false;" href="#">Sort By Content</a>
+          <ul class="nav">
+               <li><a onclick="return false;" href="#" id="images">Images</a></li>
+               <li><a onclick="return false;" href="#" id="videos">Videos</a></li>
+               <li><a onclick="return false;" href="#" id="all">All</a></li>
+          </ul>
+     </li>
+     <li id="duration-filter" class="dropdown">
+          <a id="sort-by-duration" onclick="return false;" href="#">Sort By Duration</a>
+          <ul class="nav">
+               <li><a onclick="return false;" href="#" id="15">15</a></li>
+               <li><a onclick="return false;" href="#" id="30">30</a></li>
+               <li><a onclick="return false;" href="#" id="45">45</a></li>
+               <li><a onclick="return false;" href="#" id="60">60</a></li>
+               <li><a onclick="return false;" href="#" id="all">All</a></li>
+          </ul>
+      </li>
+     <!--
      <li class="dropdown">
-     <a href="#">Sort By Content</a>
-     <ul class="nav">
-          <li><a onclick="return false;" href="#" id="images">Images</a></li>
-          <li><a onclick="return false;" href="#" id="videos">Videos</a></li>
-          <li><a onclick="return false;" href="#" id="all">All</a></li>
-     </ul>
- </li>
-<li class="dropdown">
-     <a href="#">Sort By Duration</a>
-     <ul class="nav">
-          <li><a onclick="return false;" href="#" id="15">15</a></li>
-          <li><a onclick="return false;" href="#" id="30">30</a></li>
-          <li><a onclick="return false;" href="#" id="45">45</a></li>
-          <li><a onclick="return false;" href="#" id="60">60</a></li>
-          <li><a onclick="return false;" href="#" id="all">All</a></li>
-     </ul>
- </li>
-<li class="dropdown">
-     <a href="#">Sort By Category</a>
-     <ul class="nav">
-          <li><a onclick="return false;" href="#" id="15">15</a></li>
-          <li><a onclick="return false;" href="#" id="30">30</a></li>
-          <li><a onclick="return false;" href="#" id="45">45</a></li>
-          <li><a onclick="return false;" href="#" id="60">60</a></li>
-          <li><a onclick="return false;" href="#" id="all">All</a></li>
-     </ul>
- </li>
-<hr>
-<li>
-     <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-               <input id="style-search-input" type="text" class="form-control" placeholder="Search">
-          </div>
-     </form>
-</li>
+          <a href="#">Sort By Category</a>
+          <ul class="nav">
+               <li><a onclick="return false;" href="#" id="15">15</a></li>
+               <li><a onclick="return false;" href="#" id="30">30</a></li>
+               <li><a onclick="return false;" href="#" id="45">45</a></li>
+               <li><a onclick="return false;" href="#" id="60">60</a></li>
+               <li><a onclick="return false;" href="#" id="all">All</a></li>
+          </ul>
+     </li>
+     -->
+     <hr>
+     <li>
+          <form class="navbar-form navbar-left" role="search">
+               <div class="form-group">
+                    <input id="style-search-input" type="text" class="form-control" placeholder="Search">
+               </div>
+          </form>
+     </li>
 </ul>

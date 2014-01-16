@@ -5,3 +5,9 @@
 .templates-nav li.active ul li {
 	display: block;
 }
+
+h1 {
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 30px;
+}

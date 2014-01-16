@@ -47,8 +47,8 @@ define(function (require, exports, module) {
 
 		templates: function(_contentType, _duration){
 
-			var contentType = "all";
-			var duration = "all";
+			var contentType = "any";
+			var duration = "any";
 
 			if (_contentType !== null) {
 				contentType = _contentType;

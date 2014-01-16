@@ -4,43 +4,27 @@ define(function (require, exports, module) {
 	var Holder = require('holderjs');
 	var TemplatesCollection = require('collections/Templates');
 	var TemplatesMenuView = require('./templatesMenu/templatesMenu');
-	var TemplatesListView = require('./templatesList/templatesListLayoutView');
+	var TemplatesListView = require('./templatesList/templatesListView');
 
 	require('css!./templatesLayoutView');
 	var template = require('html!./templatesLayoutView');
 
-
-
 	return BaseView.extend({
-		
-		contentType: null,
-		
-		duration: null,
 
-		initialize: function(_contentType, _duration){
+		initialize: function(options){
+			this.$el.html(template({}))
 
-			this.contentType = _contentType;
-			this.duration = _duration;
+			var templatesMenuView = new TemplatesMenuView().render();
 
-			this.highlightActiveMenuItem();
+			this.render();
 
-			var collection = this.collection = new TemplatesCollection(this.contentType, this.duration);
-
-			collection.contentType = this.contentType;
-			collection.duration = this.duration;
-			this.listenTo(collection, 'sync', this.render);
-
-			collection.fetch();
-
-			this.$el.append(template({}));
-
-			var templatesMenuView = new TemplatesMenuView().render(this.contentType, this.duration);
-
+			var templatesListView = new TemplatesListView(options.contentType, options.duration);
+				//templatesListView.render();
 		},
 
 		render: function(){
 			
-			var templatesListView = new TemplatesListView(this.collection);
+
 			
 		}
 		

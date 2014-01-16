@@ -1,3 +1,7 @@
 .clear-results {
     display: none;
 }
+.nav > li.active {
+text-decoration: none;
+background-color: #eeeeee;
+}
